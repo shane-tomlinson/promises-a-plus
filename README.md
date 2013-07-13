@@ -1,6 +1,6 @@
 # Promises A+
 
-A Saturday evening hack by Shane Tomlinson to implement the Promises A+ spec[http://promisesaplus.com/].
+A Saturday evening hack to implement the [Promises A+ spec](http://promisesaplus.com/)
 
 ## Author
 * Shane Tomlinson
