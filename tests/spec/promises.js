@@ -160,6 +160,20 @@
         promise.fulfill("value");
       });
 
+      it("pass fulfillment value to first registered onFulfilled", function(done) {
+        var promise = Promises.create();
+
+        promise.then(null, function(value) {
+          assert.ok(false);
+        }).then(function(value) {
+          assert.equal(value, "value");
+          done();
+        }, function(reason) {
+          assert.ok(false);
+        });
+
+        promise.fulfill("value");
+      });
     });
 
     describe("reject", function() {
@@ -239,6 +253,21 @@
           assert.ok(false);
         }, function(reason) {
           assert.equal(String(reason), "Error: rejected onRejected");
+          done();
+        });
+
+        promise.reject("reason");
+      });
+
+      it("pass rejection to first registered onRejected", function(done) {
+        var promise = Promises.create();
+
+        promise.then(function(value) {
+          assert.ok(false);
+        }, null).then(function(value) {
+          assert.ok(false);
+        }, function(reason) {
+          assert.equal(reason, "reason");
           done();
         });
 
