@@ -274,6 +274,22 @@
         promise.reject("reason");
       });
     });
+
+    describe("otherwise/ensure", function() {
+      it("is called when a promise fails", function(done) {
+        var promise = Promises.create();
+
+        promise.then(function(value) {
+          throw new Error("error!");
+        }).otherwise(function(e) {
+          assert.equal(String(e), "Error: error!");
+        }).ensure(function() {
+          done();
+        });
+
+        promise.fulfill("value");
+      });
+    });
   });
 
 }());
