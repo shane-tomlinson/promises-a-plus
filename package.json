@@ -1,0 +1,11 @@
+{
+    "name": "promises_a_plus",
+    "version": "0.0.1",
+    "devDependencies": {
+        "promises-aplus-tests": "*"
+    },
+    "scripts": {
+        "test": "promises-aplus-tests tests/promises-adapter"
+    }
+}
+
